@@ -1,21 +1,40 @@
+//Jeton d'accès pour avoir les fonctionnalités de MapBox
+L.mapbox.accessToken = 'pk.eyJ1IjoianV6ZTAiLCJhIjoiY2t6a2N3ZGh6MjM1ODJubnlnbnZiNmlyMCJ9.r8kb2tGM7yKRdBhIr9p3Wg';
+//Ajout du fond de carte
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'sk.eyJ1IjoianV6ZTAiLCJhIjoiY2t6bGxxcThwMHJqZTJ2bnowaTVueDdtayJ9.9FMsbuONeoPhp8ZIxXfr8A'
+}).addTo(map);
+
+//Ajout des différents fonds de carte
+
+var baseMaps = {
+    'Rues': L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11').addTo(map),
+    'Clair': L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10'),
+    'Extérieur': L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11'),
+    'Satellite': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9'),
+    'Sombre': L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10')
+};
 
 //Ajout de l'objet carte
 var map = L.map('map').setView([48.92382049560547, 2.4195966720581055], 13);
 
-
-//Ajout du fichier contenant les tracés des transports ferrés d'île-de-France
+//Ajout du fichier contenant les tracés des transports ferrés d'île-de-France et affichage des popup.
 var transports = L.geoJSON(transportsIDF,{
     pointToLayer : function(feature, latlng) {
         return L.marker(latlng);
-}}).addTo(map);
-
+}})//.addTo(map);
 
 //Ajout des gares d'île-de-France, à modifier pour afficher les noms des gares uniquement au clic sur la carte
-// var emplacementsG = L.geoJSON(emplacementsGaresIDF, {
-//     pointToLayer : function(feature, latlng) {
-//         return L.marker(latlng);
-//     }
-// }).addTo(map);
+var emplacementsG = L.geoJSON(emplacementsGaresIDF, {
+    pointToLayer : function(feature, latlng) {
+        return L.marker(latlng);
+    }
+})//.addTo(map);
 
  var popup = L.popup();
 
@@ -40,13 +59,24 @@ function onEachFeatureT(feature, layer) {
     }
 }
 
+function onEachFeatureG(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.l_aroff && feature.properties.l_aroff) {
+        layer.bindPopup("<h3>" + feature.properties.l_ar + "<h3>" + "<br>" + feature.properties.l_aroff);
+    }
+}
+
 L.geoJSON(emplacementsGaresIDF, {
     onEachFeature: onEachFeature
-}).addTo(map);
+})//.addTo(map);
 
 L.geoJSON(transportsIDF, {
     onEachFeature: onEachFeatureT
-}).addTo(map);
+})//.addTo(map);
+
+L.geoJSON(arrondissementsP, {
+    onEachFeature: onEachFeatureG
+})//.addTo(map);
 
 
 //Modifier la couleur des lignes pour corréler avec la réalité.
@@ -60,26 +90,21 @@ L.geoJSON(transportsIDF, {
 //     }
 // }).addTo(map);
 
+var arrondissementsP = L.geoJSON(arrondissementsParis,{
+    pointToLayer : function(feature, latlng) {
+        return L.marker(latlng);
+}})//.addTo(map);
 
-//Jeton d'accès pour avoir les fonctionnalités de MapBox
-L.mapbox.accessToken = 'pk.eyJ1IjoianV6ZTAiLCJhIjoiY2t6a2N3ZGh6MjM1ODJubnlnbnZiNmlyMCJ9.r8kb2tGM7yKRdBhIr9p3Wg';
-//Ajout du fond de carte
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'sk.eyJ1IjoianV6ZTAiLCJhIjoiY2t6bGxxcThwMHJqZTJ2bnowaTVueDdtayJ9.9FMsbuONeoPhp8ZIxXfr8A'
-}).addTo(map);
+var overlayMaps = {
+    "Gares d'île-de-France": emplacementsG,
+    "Transports d'île-de-France": transports,
+    "Arrondissements parisiens": arrondissementsP
+};
 
-//Ajout des différents fonds de carte
-L.control.layers({
-    'Rues': L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11').addTo(map),
-    'Clair': L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10'),
-    'Extérieur': L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11'),
-    'Satellite': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9')
-}).addTo(map);
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+// L.control.layers(overlayMaps).addTo(map);
 
 //Ajout de la zone de recherche
 map.addControl(L.mapbox.geocoderControl('mapbox.places', {
@@ -95,3 +120,5 @@ if ("geolocation" in navigator) {
         L.marker(latlng).addTo(map);
     })
 }
+
+
