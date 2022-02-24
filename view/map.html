@@ -13,77 +13,26 @@
    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+   <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
 </head>
+
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+
 <body>
-    <div class="container">
-        <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="../images/Logo.png" width="112" height="28">
-      </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-  
-        <a class="navbar-item">
-          Documentation
-        </a>
-  
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
-          </a>
-  
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div>
-      </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary" href="../view/signin.html">
-              <strong>S'inscrire</strong>
-            </a>
-            <a class="button is-light" href="../view/login.html">
-              Se connecter
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-      </div>
+  <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css"> -->
 
+  <header>
+    <!--Navigation bar-->
+    <script id="replace_with_navbar" type="module"src="../script/navbar.js" defer ></script>
+    <!--end of Navigation bar--> 
+  </header>
 
-    <div id="map">
-
-    </div>
-    
-
+      <div id="map" style="margin-top:5%"></div>
+      
+    <script src="../EmplacementsGares.geojson" type="text/javascript"></script>
+    <script src="../transportsIDF.geojson" type="text/javascript"></script>
     <script src="../script/map.js"></script>
 </body>
 </html>

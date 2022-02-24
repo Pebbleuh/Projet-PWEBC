@@ -3,89 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Bulma!</title>
+  <title>Accueil</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="../style/home.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-
 <body>
-<!--section class="section"-->
+<header>
+  <!--Navigation bar-->
+  <script id="replace_with_navbar" type="module"src="../script/navbar.js" defer ></script>
+  <!--end of Navigation bar--> 
+</header>
 
-<div class="container">
-  <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-<div class="navbar-brand">
-  <a class="navbar-item-img" href="./home.html">
-  <img id="logo" src="../images/Logo (3).png" width="128" height="256">
-  </a>
+  <section class="hero is-medium is-fullwidth video is-fullheight">
+    <!-- <div class="hero-head"> -->
 
-<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-</a>
-</div>
-
-<div id="navbarBasicExample" class="navbar-menu">
-<div class="navbar-start">
-  <a class="navbar-item">
-    Home
-  </a>
-
-  <a class="navbar-item">
-    Documentation
-  </a>
-
-  <div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link">
-      More
-    </a>
-
-    <div class="navbar-dropdown">
-      <a class="navbar-item">
-        About
-      </a>
-      <a class="navbar-item">
-        Jobs
-      </a>
-      <a class="navbar-item">
-        Contact
-      </a>
-      <hr class="navbar-divider">
-      <a class="navbar-item">
-        Report an issue
-      </a>
+    <!-- </div> -->
+    <div class="hero-video">
+        <video id="videoIntro" playsinline autoplay muted loop>
+            <source src="../images/video_intro.mp4" type="video/mp4">
+        </video>
     </div>
-  </div>
-</div>
-
-<div class="navbar-end">
-  <div class="navbar-item">
-    <div class="buttons">
-      <a class="button is-primary" href="../view/signin.html">
-        <strong>S'inscrire</strong>
-      </a>
-      <a class="button is-light" href="../view/login.html">
-        Se connecter
-      </a>
+    <div class="hero-body">
+        <div class="block container has-text-centered">
+          <div class="textIntro">
+            <h2 class="textAccueil title is-2 has-text-white">Une carte pratique et lisible pour visualiser le monde.</h2>
+          </div>
+          <br /><br />
+          <button id="mapAccess" class="button is-normal is-responsive is-info is-rounded is-medium"><a id="value" href="./map.html" style="color: white;">Cliquez-ici !</a></button>
+        </div>             
     </div>
-  </div>
-</div>
-</div>
-</nav>
-</div>
+</section>
 
-  
-<!--/section-->
-<div class="container is-fluid">
-    <video preload="true" autoplay loop muted>
+<!-- </div> -->
+
+
+<!-- <div class="container is-fluid is-max-desktop">
+    <video id="background-video" preload="true" autoplay loop muted>
       <source src="../images/video_intro.mp4" type="video/mp4">
     </video>
   </div>
 
+  <div class="container has-text-centered" id="content">
+    <h2 class="title is-2">Une carte pratique et lisible pour visualiser le monde.</h2>
+    <button class="button is-normal is-responsive is-info is-rounded is-medium"> Cliquez-ici !</button>
+  </div> -->
+
+
+
   <section class="section">
     <div class="columns">
       <div class="column is-narrow is-offset-1" style="width: 600px;">
-        <p class="title is-2 is-spaced">Une carte personnalisée à souhait</p>
+        <p class="title is-2 is-spaced" style="margin-top:10%;">Une carte personnalisée à souhait</p>
         
         <p class="subtitle is-4">
         Notre carte est personnalisée et permet d'ajouter vos lieux favoris.
@@ -101,15 +71,16 @@
       
   </div>
   </section>
-  
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script> -->
+  <script src="../script/home.js"></script>
 </body>
 
 <footer class="footer">
 <div class="content has-text-centered">
+  <img id="logo" src="../images/Logo (3).png" href="home.html" width="128" height="128">
   <p>
-    <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+    <strong>© 2022 Map'r.</strong>
   </p>
 </div>
 </footer>

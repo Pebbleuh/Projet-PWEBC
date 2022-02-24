@@ -4,88 +4,32 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Inscription</title>
+  <link rel="stylesheet" href="../style/home.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
 
-<div class="container">
-      <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary" href="./signin.html">
-            <strong>S'inscrire</strong>
-          </a>
-          <a class="button is-light" href="./login.html">
-            Se connecter
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-    </div>
+  <header>
+    <!--Navigation bar-->
+    <script id="replace_with_navbar" type="module"src="../script/navbar.js" defer ></script>
+    <!--end of Navigation bar--> 
+  </header>
 
     <section class="section">
     	<div class="column is-half is-offset-one-quarter">
     		<h1 class="title">Inscription</h1>
 
     		<div class="field">
-  <label class="label">Name</label>
+  <label class="label">Nom</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Text input">
+    <input class="input" type="text" placeholder="Nom">
   </div>
 </div>
 
 <div class="field">
-  <label class="label">Username</label>
+  <label class="label">Pseudo</label>
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+    <input class="input is-success" type="text" placeholder="Pseudo" value="">
     <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
@@ -93,13 +37,13 @@
       <i class="fas fa-check"></i>
     </span>
   </div>
-  <p class="help is-success">This username is available</p>
+  <p class="help is-success">Ce pseudo est disponible</p>
 </div>
 
 <div class="field">
   <label class="label">Email</label>
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+    <input class="input is-danger" type="email" placeholder="abc@xyz.com" value="">
     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
@@ -107,10 +51,10 @@
       <i class="fas fa-exclamation-triangle"></i>
     </span>
   </div>
-  <p class="help is-danger">This email is invalid</p>
+  <p class="help is-danger">L'adresse mail est invalide</p>
 </div>
 
-<div class="field">
+<!--<div class="field">
   <label class="label">Subject</label>
   <div class="control">
     <div class="select">
@@ -120,7 +64,7 @@
       </select>
     </div>
   </div>
-</div>
+</div>-->
 
 <div class="field">
   <label class="label">Message</label>
@@ -133,30 +77,30 @@
   <div class="control">
     <label class="checkbox">
       <input type="checkbox">
-      I agree to the <a href="#">terms and conditions</a>
+      J'ai lu et j'accepte les <a href="#">conditions d'utilisation.</a>
     </label>
   </div>
 </div>
 
-<div class="field">
+<!--<div class="field">
   <div class="control">
     <label class="radio">
       <input type="radio" name="question">
-      Yes
+      Oui
     </label>
     <label class="radio">
       <input type="radio" name="question">
-      No
+      Non
     </label>
   </div>
-</div>
+</div>-->
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button is-link">Submit</button>
+    <button class="button is-link"><a href="#"></a>S'inscrire</a></button>
   </div>
   <div class="control">
-    <button class="button is-link is-light">Cancel</button>
+    <button class="button is-link is-light"><a href="home.html">Annuler</a></button>
   </div>
 </div>
     	</div>
