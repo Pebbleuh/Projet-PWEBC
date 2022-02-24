@@ -1,0 +1,10 @@
+/* ---------------- global ---------------- */
+
+@import "navstyle.css";
+
+#map {
+    height: 600px;
+    width: 750px;    
+    margin-left: auto;
+    margin-right: auto;
+}
