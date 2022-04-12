@@ -1,19 +1,36 @@
-# Projet-PWEBC
+Map'r, application web de carte interactive avec géolocalisation
 
-J'ai pensé à d'abord ouvrir un page HTML qui indiquera les caractéristiques de la map. Ce serait une introduction.
-On pourra se connecter et accéder à la carte uniquement si on est connecté (PHP ou autre...).
+# Installation du projet
 
-Le bouton serait sur la vidéo d'arrière-plan et redirigerait sur une page qui demande à l'utilisateur de se connecter ou sinscrire si c'est pas déjà fait. Sinon, on affichera la carte.
+    Avec Xampp/MAMP
+
+- Mettez le dossier du projet dans C:/xampp/htdocs
+
+- Dans votre serveur, si vous êtes sur localhost, tapez localhost/phpmyadmin dans la barre de recherche du navigateur
+
+- Créez une nouvelle base et nommez-la « map’r » (au besoin changez le login et mot de passe dans connectDB), importez script.sql
+(le script se trouve dans model).
+
+- Tapez localhost dans la barre de recherche du navigateur et cliquez sur le dossier du projet pour le lancer.
+
+- Dans le fichier script/map.js, dans les fonctions addMarker(), removeMarker() et dans la requête post servant à récupérer les marqueurs,
+modifiez le chemin si besoin.
+Par défaut, les chemins sont :
+- "/Map’r/model/fetchMarkersDB.php"
+- "/Map’r/model/addMarkerDB.php"
+- "/Map’r/model/removeMarkerDB.php"
 
 
-# FONCTIONNALITES : ------------------------------------------------------
+# FONCTIONNALITES : ---------------------------------------------------------
 
-Une fois sur la carte, on pourra zoomer/dézoomer, créer un pin sur un endroit (ensuite on pourra afficher des options comme : "y aller" ou "itinéraire" etc...)
+- Zoomer/dézoom sur la carte, créer et enregistrer un marqueur sur un endroit
 
-On pourra ajouter différents templates de cartes au choix de l'utilisateur (thème satellite, carte basique, carte de transports, reliefs etc...).
+- Différents templates de cartes au choix de l'utilisateur (rues, clair, extérieur, satellite, sombre)
 
-On pourrait faire un mode nuit aussi.
+- Les marqueurs seront déplaçables et retirables. Choix de les afficher ou non
 
-Les pins seront déplaçables, retirables...
+- Affichage des gares d'Île-de-France sous forme de clusters de marqueurs, des lignes de transports et des arrondissements parisiens
 
-On pourra stocker les itinéraires réalisés (je sais absolument pas comment faire ça).
+- Calcul de temps de trajet entre deux points (saisie des adresses des deux points)
+
+- Recherche d'adresses

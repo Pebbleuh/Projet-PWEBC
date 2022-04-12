@@ -1,38 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-   <link rel="stylesheet" href="../style/map.css"/>
-   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
-   <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-</head>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Carte</title>
 
-<!-- Load the `mapbox-gl-geocoder` plugin. -->
+		<!--CSS-->
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"
+		/>
+		<link
+			href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+		/>
 
-<body>
-  <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css"> -->
+		<link rel="stylesheet" href="style/navbar.css" />
+		<link rel="stylesheet" href="style/map.css" />
 
-  <header>
-    <!--Navigation bar-->
-    <script id="replace_with_navbar" type="module"src="../script/navbar.js" defer ></script>
-    <!--end of Navigation bar--> 
-  </header>
+		<!--JS-->
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	</head>
 
-      <div id="map" style="margin-top:5%"></div>
-      
-    <script src="../EmplacementsGares.geojson" type="text/javascript"></script>
-    <script src="../transportsIDF.geojson" type="text/javascript"></script>
-    <script src="../script/map.js"></script>
-</body>
+	<body class="is-clipped">
+		<header>
+			<?php require("view/navbarUser.html");?>
+		</header>
+
+		<div id="map"></div>
+
+		<div class="block container has-text-centered" style="margin-top: 20px">
+			<input
+				type="button"
+				id="openDialog"
+				class="button is-normal is-responsive is-info is-rounded"
+				value="Calculer le temps d'un itinéraire"
+			/>
+			<div id="dialog" class="box">
+				<label class="label" for="adresseSrc">Adresse de départ</label>
+				<input class="input" id="adresseSrc" type="text" style="width:100%"/>
+
+				<label class="label" for="adresseDest">Adresse d'arrivée</label>
+				<input class="input" id="adresseDest" type="text" style="width:100%"/>
+
+				<button class="button is-primary" id="tempsTrajet" style="margin-top: 5%;">Calculer</button>
+				<p class="" id="affichageTempsTrajet"></p>
+				<!--Contiendra le ou les temps de trajet-->
+			</div>
+			
+		</div>
+
+		<p id="IdUser" style="display: none;">
+			<?php echo $_SESSION["profil"]["IdUser"]; ?>
+		</p>
+
+		<!-- Scripts -->
+		<script src="EmplacementsGares.geojson" type="text/javascript"></script>
+		<script src="transportsIDF.geojson" type="text/javascript"></script>
+		<script src="arrondissements.geojson" type="text/javascript"></script>
+
+		<script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+
+		<!-- JQuery scripts -->
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+		<script src="script/map.js"></script>
+	</body>
 </html>

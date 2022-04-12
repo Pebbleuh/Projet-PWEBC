@@ -1,10 +1,15 @@
-/* ---------------- global ---------------- */
-
-@import "navstyle.css";
-
 #map {
-    height: 600px;
-    width: 750px;    
+	/* height: 100vh;*/
+	width: 100vw;
+	height: 500px;
+	z-index: 1;
+	/* width: 100%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
 }
+/* #map{
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+} */

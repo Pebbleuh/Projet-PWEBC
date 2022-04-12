@@ -1,0 +1,18 @@
+.navlogo {
+	height: 6.5rem;
+	margin-top: 0.5rem;
+	position: sticky;
+}
+
+.logoalign {
+	height: 5rem;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+.btnInscrire {
+	background-color: #018345;
+	color: #fff;
+	border: none;
+}
